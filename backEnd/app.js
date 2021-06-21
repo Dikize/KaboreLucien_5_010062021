@@ -2,6 +2,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 
+require('dotenv').config()
+// import dotenv from 'dotenv';
+// dotenv.config()
+
 const cameraRoutes = require('./routes/camera');
 const teddyRoutes = require('./routes/teddy');
 const furnitureRoutes = require('./routes/furniture');
@@ -9,13 +13,13 @@ const furnitureRoutes = require('./routes/furniture');
 const app = express();
 
 mongoose.connect(
-  'mongodb+srv://dikize:2pcHkrYwqLFyCoYB@cluster0.cmphm.mongodb.net/orinoco?retryWrites=true&w=majority',
+  process.env.MONGODB, 
   { useNewUrlParser: true })
   .then(() => {
-    console.log('Successfully connected to MongoDB Atlas!');
+    console.log('Connecté avec succès à Mongodb Atlas!');
   })
   .catch((error) => {
-    console.log('Unable to connect to MongoDB Atlas!');
+    console.log('Impossible de se connecter à Mongodb Atlas!');
     console.error(error);
   });
   

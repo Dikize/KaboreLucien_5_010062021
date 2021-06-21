@@ -5,6 +5,7 @@ const INITIAL_STATE = {
 export default function cartReducer(state = INITIAL_STATE, action) {
     
     // Quand on va rajouter un item
+    // eslint-disable-next-line default-case
     switch (action.type) {
         case "ADDITEM":
         const indexItemAdd = state.cart.findIndex(

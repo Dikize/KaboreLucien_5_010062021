@@ -7,7 +7,7 @@ import "./ProductShowcase.css";
 import inventory from "../../data/inventory";
 
 export default function ProductShowcase() {
-    const [nbMugs, setNbMugs] = useState(1);
+    const [nbCamera, setNbCamera] = useState(1);
 
     // useParams nous retourne un objet
     const { id } = useParams();
@@ -18,8 +18,8 @@ export default function ProductShowcase() {
     );
         
     //Mise à jour des élément au clique sur ajouter
-    const updateMugs = (e) => {
-        setNbMugs(Number(e.target.value));
+    const updateCamera = (e) => {
+        setNbCamera(Number(e.target.value));
     };
     
     // 
@@ -37,7 +37,7 @@ export default function ProductShowcase() {
         // 
         const itemAdded = {
             ...inventory[productClicked],
-            quantity: nbMugs
+            quantity: nbCamera
         }
         
         // 
@@ -94,9 +94,9 @@ export default function ProductShowcase() {
                     <input
                         type="number"
                         id="quanitity"
-                        value={nbMugs}
+                        value={nbCamera}
                         // Liaison avec le state
-                        onChange={updateMugs}
+                        onChange={updateCamera}
                     />
                     <button>Ajouter au panier</button>
                     
