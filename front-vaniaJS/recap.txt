@@ -1,0 +1,6 @@
+- Crée une class produit
+
+- calculer le totale des élements
+
+- faire un delette des produits
+

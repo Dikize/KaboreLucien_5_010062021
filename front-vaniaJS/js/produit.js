@@ -62,7 +62,8 @@ fetch(newUrl)
             const list = document.getElementById("option");
             const quantity = document.getElementById("quantity");
 
-            // créer un nouveau produit
+            //???? Crée une class produit
+            // créer un nouveau produit 
             let objectProduct = new Product(
                 newId,
                 product.name,

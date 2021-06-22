@@ -1,0 +1,99 @@
+/* #liste .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #ffbc00, #ff0058);
+
+}
+#liste .card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #ffbc00, #ff0058);
+    filter: blur(30px);
+}
+
+#liste .carte:nth-child(2) .card::before,
+#liste .carte:nth-child(2) .card::after {
+    background: linear-gradient(315deg, #03a9f4, #ff0058)
+}
+#liste .carte:nth-child(3) .card::before,
+#liste .carte:nth-child(3) .card::after {
+    background: linear-gradient(315deg, #4dff03, #00d0ff)
+}
+
+#liste .card span {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    background: rgba(0,0,0,0.6);
+    z-index: 2;
+    
+}
+
+#liste .card span::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: rgba(255,255,255,0.1);
+    pointer-events: none;
+}
+
+#liste .card-body {
+    position: relative;
+    z-index: 10000;
+}
+#liste .card h5, #liste .card p {
+    color: #fff;
+}
+
+#liste .card:hover {
+    transform: translateY(-20px)
+} */
+body {
+    font-family: 'Merienda One', sans-serif;
+    background-color: #161623;
+}
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: linear-gradient(#f00, #f0f);
+    clip-path: circle(30% at right 70%);
+}
+
+#liste .card {
+    box-shadow: 20px 20px 50px rgba(0, 0, 0,0.5)!important;
+    border-radius: 15px!important;
+    background-color:rgba(255,255,255,0.1)!important;
+    border-top: 1px solid  rgba(255,255,255,0.5)!important;
+    border-left: 1px solid  rgba(255,255,255,0.5)!important;
+    backdrop-filter: blur(5px)!important;
+    
+    transition: 0.5;
+}
+#liste .card:hover {
+    transform: translateY(-20px)
+}
+
+#liste .card-body {
+    color: #fff;
+}
+
+#liste .card .btn {
+    box-shadow: 0 5px 15px rgba(0, 0, 0,1)!important;
+}

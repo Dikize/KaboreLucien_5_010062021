@@ -18,8 +18,8 @@ function addCards(data) {
         //convertit le prix
         const price = convertPrice(produit.price);
         card.innerHTML += `
-        <div class="col-sm-12 col-md-6 col-lg-6 pb-3  ">
-            <div class="card border bg-light shadow p-3 mb-5 bg-body rounded">
+        <div class="col-sm-12 col-md-6 col-lg-6 pb-3 carte ">
+            <div class="card border shadow p-3 mb-5 bg-body rounded">
                 <div class="card-body">
                     <div class="row">
                         <a href="./front-vaniaJS/produit.html?_id=${produit._id}"><img src="${produit.imageUrl}" class="img-fluid img-thumbnail p-1" alt="${produit.name}"></a>
@@ -31,9 +31,16 @@ function addCards(data) {
                         </div>
                     </div>
                     <p class="card-text text-truncate">${produit.description}</p>
-                    <a href="./front-vaniaJS/produit.html?_id=${produit._id}" class="btn btn-dark">Ajouter au panier</a>
+                    <a href="./front-vaniaJS/produit.html?_id=${produit._id}" class="btn btn-light">Ajouter au panier</a>
                 </div>
             </div>
         </div>`;
+
+        VanillaTilt.init(document.querySelectorAll(".card"), {
+            max: 25,
+            speed: 400,
+            glare: true,
+            "max-glare": 1
+        });
     }
 }
