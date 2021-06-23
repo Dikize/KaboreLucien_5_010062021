@@ -97,3 +97,11 @@ body::before {
 #liste .card .btn {
     box-shadow: 0 5px 15px rgba(0, 0, 0,1)!important;
 }
+
+nav img {
+	height: 40px!important;
+}
+
+.table-responsive {
+    color: #fff;
+}

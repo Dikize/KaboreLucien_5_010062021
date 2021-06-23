@@ -54,3 +54,14 @@ function displayProductListTable(product) {
         </td>
     </tr>`;
 }
+
+//aff totalPanier
+function totalPrice() {
+    const totalPrice = document.getElementById("totalPrice");
+    totalPrice.innerHTML += `${convertPrice(displayTotalPanier())}`;
+}
+
+// supprimer le Panier
+function clearPanier() {
+    localStorage.clear();
+}

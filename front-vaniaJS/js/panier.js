@@ -30,4 +30,47 @@ if (panier.length < 1) {
         add.addEventListener("click", addProduct);
     }
 
+    // supprimer un produit
+    function minusProduct(event) {
+        const index = event.target.getAttribute("data-index");
+        if (panier[index].quantity > 1) {
+            panier[index].quantity--;
+        } else {
+            panier.splice(index, 1);
+        }
+        localStorage.setItem("cameras", JSON.stringify(panier));
+        location.reload();
+    }
+
+    const buttonMinus = document.getElementsByClassName("minus");
+    for (minus of buttonMinus) {
+        minus.addEventListener("click", minusProduct);
+    }
+
+    // affiche le prix total
+    totalPrice();
+
+    // affiche formulaire et masque les boutons valider/supprimer panier
+    const validationPanier = document.getElementById("validationPanier");
+    const cacheButton = document.getElementById("cacheButton");
+    validationPanier.addEventListener("click", () => {
+        orderForm.classList.toggle("d-none");
+        cacheButton.classList.add("d-none");
+    });
+
+    // vide le panier
+    const buttonClearPanier = document.getElementById("clearPanier");
+    buttonClearPanier.addEventListener("click", () => {
+        clearPanier();
+        location.reload();
+    });
+
+    // calcul du total
+    function displayTotalPanier() {
+        let totalPanier = 0;
+        panier.forEach((camera) => {
+            totalPanier = totalPanier + camera.price * camera.quantity;
+        });
+        return totalPanier;
+    }
 }
