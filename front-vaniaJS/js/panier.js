@@ -64,13 +64,4 @@ if (panier.length < 1) {
         clearPanier();
         location.reload();
     });
-
-    // calcul du total
-    function displayTotalPanier() {
-        let totalPanier = 0;
-        panier.forEach((camera) => {
-            totalPanier = totalPanier + camera.price * camera.quantity;
-        });
-        return totalPanier;
-    }
 }

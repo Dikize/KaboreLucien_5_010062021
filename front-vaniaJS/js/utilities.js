@@ -49,10 +49,18 @@ function displayProductListTable(product) {
         <td class="align-middle">
             <span>${convertPrice(product.price)}</span>
         </td>
-        <td class="align-middle bg-light">
+        <td class="align-middle bg-dark">
             <span>${convertPrice(product.quantity * product.price)}</span>
         </td>
     </tr>`;
+}
+// calcul du total
+function displayTotalPanier() {
+    let totalPanier = 0;
+    panier.forEach((camera) => {
+        totalPanier = totalPanier + camera.price * camera.quantity;
+    });
+    return totalPanier;
 }
 
 //aff totalPanier
