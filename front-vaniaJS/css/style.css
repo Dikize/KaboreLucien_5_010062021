@@ -75,7 +75,10 @@ body::before {
     background-color: linear-gradient(#f00, #f0f);
     clip-path: circle(30% at right 70%);
 }
-
+nav + .title {
+    background-color:rgba(255,255,255,0.1)!important;
+    box-shadow: 20px 20px 50px rgba(0, 0, 0,0.5)!important;
+}
 #liste .card {
     box-shadow: 20px 20px 50px rgba(0, 0, 0,0.5)!important;
     border-radius: 15px!important;

@@ -1,6 +1,14 @@
-- Crée une class produit
+- Crée les info à envoyer en post
 
-- calculer le totale des élements
+- valider le formulaire et post
 
-- faire un delette des produits
+- controle de la saisie du form 
 
+- recupere l'heure et la date de commande 
+
+
+                page remerciement 
+
+- affiche le recap de la commande (total + date + info client)
+
+ ......

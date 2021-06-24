@@ -1,5 +1,6 @@
 //Variables Globales
-const url = `https://back-end-orinoco.herokuapp.com/api/Cameras`;
+// const url = `https://back-end-orinoco.herokuapp.com/api/Cameras`;
+const url = `http://localhost:3000/api/cameras`;
 const panier = JSON.parse(localStorage.getItem("cameras")) || [];
 
 // convertir le prix
@@ -23,6 +24,19 @@ function panierPreview() {
             calculPanierPreview += product.quantity;
         }
         addPanierPreview.innerHTML = `Panier <span class="badge rounded-pill bg-secondary align-middle my-auto">${calculPanierPreview}</span>`;
+    }
+}
+
+// class produit
+class Product {
+    constructor(id, name, description, price, option, quantity, imgurl) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = +price;
+        this.option = option;
+        this.quantity = +quantity;
+        this.imgurl = imgurl;
     }
 }
 
