@@ -64,4 +64,7 @@ if (panier.length < 1) {
         clearPanier();
         location.reload();
     });
+
+    //validation du formulaire et envoie en POST
+    const order = document.getElementById("order");
 }
