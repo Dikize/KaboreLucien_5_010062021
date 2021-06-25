@@ -63,7 +63,7 @@ function displayProductListTable(product) {
         <td class="align-middle">
             <span>${convertPrice(product.price)}</span>
         </td>
-        <td class="align-middle bg-dark">
+        <td class="align-middle">
             <span>${convertPrice(product.quantity * product.price)}</span>
         </td>
     </tr>`;
