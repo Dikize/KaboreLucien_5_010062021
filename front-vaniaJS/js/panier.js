@@ -50,7 +50,7 @@ if (panier.length < 1) {
     // affiche le prix total
     totalPrice();
 
-    // affiche formulaire et masque les boutons valider/supprimer panier
+    //affiche le formulaire et cache les boutons valider/supprimer panier
     const validationPanier = document.getElementById("validationPanier");
     const cacheButton = document.getElementById("cacheButton");
     validationPanier.addEventListener("click", () => {
@@ -58,7 +58,7 @@ if (panier.length < 1) {
         cacheButton.classList.add("d-none");
     });
 
-    // vide le panier
+    //vide le panier
     const buttonClearPanier = document.getElementById("clearPanier");
     buttonClearPanier.addEventListener("click", () => {
         clearPanier();
@@ -67,4 +67,66 @@ if (panier.length < 1) {
 
     //validation du formulaire et envoie en POST
     const order = document.getElementById("order");
+    //const regexName = ;
+    //const regexCity = ;
+    //const regexMail = ;
+    //const regexAddress = ;
+    const checkBox = document.getElementById("invalidCheck2");
+
+    order.addEventListener("click", (event) => {
+        // on prépare les infos pour l'envoie en POST
+        let contact = {
+            firstName: document.getElementById("firstName").value,
+            lastName: document.getElementById("lastName").value,
+            address: document.getElementById("address").value,
+            city: document.getElementById("city").value,
+            email: document.getElementById("email").value,
+        };
+
+        // verification de l'information saisi
+        if (
+            (regexMail.test(contact.email) == true) &
+            (regexName.test(contact.firstName) == true) &
+            (regexName.test(contact.lastName) == true) &
+            (regexCity.test(contact.city) == true) &
+            (regexAddress.test(contact.address) == true) &
+            (checkBox.checked == true)
+        ) {
+            event.preventDefault();
+
+            // on stocke date/heure de la commande
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+
+            // envoie en POST
+            fetch("https://back-end-orinoco.herokuapp.com/api/Cameras/order", 
+            // fetch("http://localhost:3000/api/cameras/order", 
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ contact, products }),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    localStorage.setItem("order", JSON.stringify(data));
+                    document.location.href = "order.html";
+                })
+                .catch((erreur) => console.log("erreur : " + erreur));
+        } else {
+            alert(
+                "Veuillez correctement verifier les informations saisi s'ils vous plaît."
+            );
+        }
+
+    });
 }

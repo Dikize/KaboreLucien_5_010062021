@@ -27,3 +27,21 @@ for(element of deletedItem){
 
 //affiche le prix total
 totalPrice();
+
+//bouton imprimer
+const print = document.getElementById("print");
+print.addEventListener("click", (e) => {
+    e.preventDefault;
+    window.print();
+});
+
+//vide le localStorage
+const clickHome = document.getElementById("accueil");
+clickHome.addEventListener("click", () => {
+    clearPanier();
+});
+
+const clickPanier = document.getElementById("panierPreview");
+clickPanier.addEventListener("click", () => {
+    clearPanier();
+});
