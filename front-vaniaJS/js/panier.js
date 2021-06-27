@@ -1,7 +1,9 @@
 //Mise à jour du panierPreview
 panierPreview();
 
+// 
 const orderForm = document.getElementById("orderForm");
+// 
 const emptyPanier = document.getElementById("emptyPanier");
 
 // indique que le panier est vide
@@ -9,10 +11,13 @@ if (panier.length < 1) {
     orderForm.classList.add("d-none");
   // sinon affiche le tableau avec les produits
 } else {
+    // 
     orderForm.classList.add("d-none");
     emptyPanier.classList.add("d-none");
+    // 
     const fullPanier = document.getElementById("panier");
     fullPanier.classList.toggle("d-none");
+    // 
     for (product of panier) {
         displayProductListTable(product);
     }
@@ -25,6 +30,7 @@ if (panier.length < 1) {
         location.reload();
     }
 
+    //
     const buttonAdd = document.getElementsByClassName("plus");
     for (add of buttonAdd) {
         add.addEventListener("click", addProduct);
@@ -43,6 +49,7 @@ if (panier.length < 1) {
     }
 
     const buttonMinus = document.getElementsByClassName("minus");
+    //
     for (minus of buttonMinus) {
         minus.addEventListener("click", minusProduct);
     }
@@ -65,12 +72,14 @@ if (panier.length < 1) {
         location.reload();
     });
 
+    // https://code.tutsplus.com/tutorials/form-input-validation-using-only-html5-and-regex--cms-33095
+    // http://www.tutorialspark.com/javascript/JavaScript_Regular_Expression_Form_Validation.php
     //validation du formulaire et envoie en POST
     const order = document.getElementById("order");
-    //const regexName = ;
-    //const regexCity = ;
-    //const regexMail = ;
-    //const regexAddress = ;
+    const regexName = /^(([a-zA-ZÀ-ÿ]+[\s\-]{1}[a-zA-ZÀ-ÿ]+)|([a-zA-ZÀ-ÿ]+))$/;
+    const regexCity = /^(([a-zA-ZÀ-ÿ]+[\s\-]{1}[a-zA-ZÀ-ÿ]+)|([a-zA-ZÀ-ÿ]+)){1,10}$/;
+    const regexMail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-z]{2,4}$/;
+    const regexAddress = /^(([a-zA-ZÀ-ÿ0-9]+[\s\-]{1}[a-zA-ZÀ-ÿ0-9]+)){1,10}$/;
     const checkBox = document.getElementById("invalidCheck2");
 
     order.addEventListener("click", (event) => {
@@ -94,7 +103,7 @@ if (panier.length < 1) {
         ) {
             event.preventDefault();
 
-            // on stocke date/heure de la commande
+            // stock date/heure de la commande
             // 
             // 
             // 
@@ -105,7 +114,7 @@ if (panier.length < 1) {
             // 
             // 
             // 
-
+            
             // envoie en POST
             fetch("https://back-end-orinoco.herokuapp.com/api/Cameras/order", 
             // fetch("http://localhost:3000/api/cameras/order", 

@@ -1,3 +1,5 @@
+- Ajouter plus de commentaire comme souhaiter dans l'enoncer
+
 - Crée les info à envoyer en post
 
 - valider le formulaire et post

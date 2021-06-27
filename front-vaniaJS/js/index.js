@@ -17,6 +17,7 @@ function addCards(data) {
         const card = document.getElementById("liste");
         //convertit le prix
         const price = convertPrice(produit.price);
+        //
         card.innerHTML += `
         <div class="col-sm-12 col-md-6 col-lg-6 pb-3 carte ">
             <div class="card border shadow p-3 mb-5 bg-body rounded">

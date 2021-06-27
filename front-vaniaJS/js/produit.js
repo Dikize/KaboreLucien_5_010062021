@@ -9,6 +9,7 @@ const newId = searchParams.get("_id");
 const newUrl = `https://back-end-orinoco.herokuapp.com/api/Cameras/${newId}`;
 // const newUrl = `http://localhost:3000/api/cameras/${newId}`;
 
+// 
 fetch(newUrl)
     .then((response) => response.json())
     .then((data) => {
@@ -25,29 +26,35 @@ fetch(newUrl)
                 <img src="${product.imageUrl}" class="img-fluid img-thumbnail" alt="${product.name}">
             `
         ;
+            // 
             const selectionProductName = document.getElementById("productName");
             selectionProductName.innerHTML += 
             `
                 <h5 class="card-title">${product.name}</h5>
             `
         ;
+            // 
             const selectionProductPrice = document.getElementById("productPrice");
             selectionProductPrice.innerHTML += 
             `
                 <h5 class="card-title">${convertPrice(product.price)}</h5>
             `
         ;
+            // 
             const selectionProductDescription = document.getElementById("productDescription");
             selectionProductDescription.innerHTML += 
             `
                 <p class="card-text">${product.description}</p>
             `
         ;
+            // 
             addLenses(product);
         }
 
+        // 
         function addLenses(product) {
             const versionChoice = document.getElementById("option");
+            // 
             for (let lenses of product.lenses) {
                 versionChoice.innerHTML += 
                 `
@@ -57,7 +64,9 @@ fetch(newUrl)
             }
         }
 
+        // 
         const btnAddPanier = document.getElementById("btnAddPanier");
+        // 
         btnAddPanier.addEventListener("click", (e) => {
             e.preventDefault();
             const list = document.getElementById("option");
