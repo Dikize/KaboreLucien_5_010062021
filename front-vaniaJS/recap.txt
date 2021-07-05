@@ -1,16 +1,3 @@
 - Ajouter plus de commentaire comme souhaiter dans l'enoncer
 
-- Crée les info à envoyer en post
-
-- valider le formulaire et post
-
-- controle de la saisie du form 
-
-- recupere l'heure et la date de commande 
-
-
-                page remerciement 
-
-- affiche le recap de la commande (total + date + info client)
-
-Heee encore beaucoup de tafff excitant
+- effectuer le plan test try catch

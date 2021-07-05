@@ -6,9 +6,11 @@ const panier = JSON.parse(localStorage.getItem("cameras")) || [];
 // convertir le prix
 function convertPrice(productPrice) {
     let price = `${productPrice}`;
+    // constructeur pour formater des nombres en fonction du locale ici fr.
     price = Intl.NumberFormat("fr-FR", {
         style: "currency",
         currency: "EUR",
+        // minimumFractionDigits le nombre minimum de chiffres de fraction à utiliser
         minimumFractionDigits: 2,
     }).format(price / 100);
     return price;
@@ -40,7 +42,7 @@ class Product {
     }
 }
 
-//ajoute le tableau de commande
+// ajoute le tableau de commande
 function displayProductListTable(product) {
     const indexProduct = panier.indexOf(product);
     const productList = document.getElementById("productsPanier");
@@ -77,13 +79,13 @@ function displayTotalPanier() {
     return totalPanier;
 }
 
-//aff totalPanier
+// aff totalPanier
 function totalPrice() {
     const totalPrice = document.getElementById("totalPrice");
     totalPrice.innerHTML += `${convertPrice(displayTotalPanier())}`;
 }
 
-// supprimer le Panier
+// supprimer le Panier grace à la méthode clear()
 function clearPanier() {
     localStorage.clear();
 }

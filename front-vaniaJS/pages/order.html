@@ -28,7 +28,7 @@
     <!--Nav menu-->
     <nav class="navbar navbar-expand-lg navbar-light bg-white ">
         <div class="container-fluid mx-2 mx-lg-5">
-            <img class="img-fluid mx-4 mx-lg-0 mr-auto w-25" src="../../favicon/logo.png" alt="logo orinoco"/>
+            <img class="img-fluid mx-4 mx-lg-0 mr-auto" src="../../favicon/logo.png" alt="logo orinoco"/>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
                     aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -47,31 +47,31 @@
     </nav>
 
     <!-- Contact details -->
-    <section id="contact" class="mx-5 px-0 px-lg-5">
-        <p class="text-center fs-2 my-5 bg-secondary text-white">Mes informations</p>
+    <section id="contact" class="mx-5 px-0 px-lg-5 text-white">
+        <p class="text-center fs-2 my-5 bg-secondary">Mes informations</p>
     </section>
 
     <!-- Table -->
-    <section id="section" class="container my-5 align-middle border-top border-dark">
-        <p class="text-center fs-2 my-5 bg-secondary text-white">Récapitulatif de votre commande</p>
+    <section id="section" class="container my-5 align-middle border-top border-dark text-white">
+        <p class="text-center fs-2 my-5 bg-secondary">Récapitulatif de votre commande</p>
         <div class="table-responsive">
-            <table class="table table-hover my-auto mx-0">
+            <table class="table table-hover my-auto mx-0 text-white">
                 <thead>
-                <tr class="text-center fs-5">
+                <tr class="text-center fs-5 bg-dark">
                     <th scole="col">Produit</th>
                     <th scole="col">Nom</th>
                     <th scole="col">Option</th>
                     <th scole="col">Quantité</th>
                     <th scole="col">Prix</th>
-                    <th scole="col" class="bg-light">Total</th>
+                    <th scole="col">Total</th>
                 </tr>
                 </thead>
                 <tbody id="productsPanier">
                 <!--Insertion panier.js-->
                 </tbody>
                 <tfoot>
-                <tr class="text-center fs-5 bg-light">
-                    <th colspan="4" class="bg-white"></th>
+                <tr class="text-center fs-5 bg-dark">
+                    <th colspan="4"></th>
                     <th colspan="1">Total : </th>
                     <th colspan="1" id="totalPrice"></th>
                 </tr>
@@ -85,17 +85,17 @@
 
 
     <!-- Footer -->
-    <footer class="bg-light py-4">
+    <footer class="bg-dark py-4">
         <ul class="list-inline text-center">
             <li class="list-inline-item"><a href="../../index.html" title="Accueil">Accueil</a></li>
             <li class="list-inline-item"><a href="#" title="Contact">Contact</a></li>
             <li class="list-inline-item"><a href="#" title="Mentions Légales">Mentions Légales</a></li>
         </ul>
-        <p class="copyright text-center">Orinoco OpenClassRooms © Dev 2021</p>
+        <p class="copyright text-center text-white">Orinoco OpenClassRooms © Dev 2021</p>
     </footer>
 
-    <script src="../../front-vaniaJS/js/utilities.js"></script>
-    <script src="../../front-vaniaJS/js/produit.js"></script>
+    <script src="../js/utilities.js"></script>
+    <script src="../js/order.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 
 </body>

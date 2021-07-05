@@ -1,28 +1,29 @@
 //Mise à jour du panierPreview
 panierPreview();
 
-// 
+// section formulaire
 const orderForm = document.getElementById("orderForm");
-// 
+// section panier vide 
 const emptyPanier = document.getElementById("emptyPanier");
 
-// indique que le panier est vide
+// indique que le panier est vide, donc masque le formulaire
 if (panier.length < 1) {
     orderForm.classList.add("d-none");
   // sinon affiche le tableau avec les produits
 } else {
-    // 
+    // si le panier est contient un produit on masque le panier vide et le formulaire.
     orderForm.classList.add("d-none");
     emptyPanier.classList.add("d-none");
-    // 
+    
+    // toggle bascule la section panier en block si le panier contient au moin un produit
     const fullPanier = document.getElementById("panier");
     fullPanier.classList.toggle("d-none");
-    // 
+    // boucle pour les produit
     for (product of panier) {
         displayProductListTable(product);
     }
 
-    // ajouter produit
+    // ajouter produit avec le button +
     function addProduct(event) {
         const index = event.target.getAttribute("data-index");
         panier[index].quantity++;
@@ -30,13 +31,13 @@ if (panier.length < 1) {
         location.reload();
     }
 
-    //
+    // evenement sur le button + pour ajouter un element
     const buttonAdd = document.getElementsByClassName("plus");
     for (add of buttonAdd) {
         add.addEventListener("click", addProduct);
     }
 
-    // supprimer un produit
+    // supprimer un produit avec le button -
     function minusProduct(event) {
         const index = event.target.getAttribute("data-index");
         if (panier[index].quantity > 1) {
@@ -49,7 +50,7 @@ if (panier.length < 1) {
     }
 
     const buttonMinus = document.getElementsByClassName("minus");
-    //
+    // evenement sur le button - pour supprimer un element 
     for (minus of buttonMinus) {
         minus.addEventListener("click", minusProduct);
     }
@@ -57,7 +58,7 @@ if (panier.length < 1) {
     // affiche le prix total
     totalPrice();
 
-    //affiche le formulaire et cache les boutons valider/supprimer panier
+    //affiche le formulaire quand on clique sur valider le panier et cache les boutons valider/supprimer panier
     const validationPanier = document.getElementById("validationPanier");
     const cacheButton = document.getElementById("cacheButton");
     validationPanier.addEventListener("click", () => {
@@ -104,16 +105,39 @@ if (panier.length < 1) {
             event.preventDefault();
 
             // stock date/heure de la commande
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
+            const todayDate = new Date();
+            let nowadays = todayDate.getDate();
+            let month = todayDate.getMonth() + 1;
+            let todayHours = todayDate.getHours();
+            let todayMinutes = todayDate.getMinutes();
+
+            if (nowadays < 10) {
+                nowadays = "0" + nowadays;
+            }
+
+            if (month < 10) {
+                month = "0" + month;
+            }
+
+            if (todayHours < 10) {
+                todayHours = "0" + todayHours;
+            }
+
+            if (todayMinutes < 10) {
+                todayMinutes = "0" + todayMinutes;
+            }
+
+            const date = nowadays + "-" + month + "-" + todayDate.getFullYear();
+            const hours = todayHours + ":" + todayMinutes;
+            const fullDate = { date, hours };
+            const infoOrder = JSON.parse(localStorage.getItem("date")) || [];
+            infoOrder.push(fullDate);
+            localStorage.setItem("date", JSON.stringify(infoOrder));
+
+            let products = [];
+            for (listId of panier) {
+                products.push(listId.id);
+            }
             
             // envoie en POST
             fetch("https://back-end-orinoco.herokuapp.com/api/Cameras/order", 

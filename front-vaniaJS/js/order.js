@@ -22,7 +22,7 @@ for (product of panier) {
     displayProductListTable(product);
 }
 const deletedItem = document.getElementsByClassName("rounded");
-// 
+// cache les button + et -
 for(element of deletedItem){
     element.classList.add("d-none");
 }
@@ -43,7 +43,7 @@ clickHome.addEventListener("click", () => {
     clearPanier();
 });
 
-// 
+// Supprime le panier
 const clickPanier = document.getElementById("panierPreview");
 clickPanier.addEventListener("click", () => {
     clearPanier();

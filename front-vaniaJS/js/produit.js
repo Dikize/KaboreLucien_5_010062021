@@ -16,7 +16,7 @@ fetch(newUrl)
         const product = data;
         addCard(data);
 
-        // fonction pour la création de la card de la page produit
+        // fonction pour la création de card de la page produit
         function addCard(product) {
 
             // insertion des information de la card du produit
@@ -26,21 +26,21 @@ fetch(newUrl)
                 <img src="${product.imageUrl}" class="img-fluid img-thumbnail" alt="${product.name}">
             `
         ;
-            // 
+            // insertion du nom 
             const selectionProductName = document.getElementById("productName");
             selectionProductName.innerHTML += 
             `
                 <h5 class="card-title">${product.name}</h5>
             `
         ;
-            // 
+            // insertion du prix converti grace à la fonction convertPrice
             const selectionProductPrice = document.getElementById("productPrice");
             selectionProductPrice.innerHTML += 
             `
                 <h5 class="card-title">${convertPrice(product.price)}</h5>
             `
         ;
-            // 
+            // insertion de la description
             const selectionProductDescription = document.getElementById("productDescription");
             selectionProductDescription.innerHTML += 
             `
@@ -51,10 +51,10 @@ fetch(newUrl)
             addLenses(product);
         }
 
-        // 
+        // fonction pour la version de l'élément
         function addLenses(product) {
             const versionChoice = document.getElementById("option");
-            // 
+            // boucle pour la version de l'appareil 
             for (let lenses of product.lenses) {
                 versionChoice.innerHTML += 
                 `
@@ -64,16 +64,14 @@ fetch(newUrl)
             }
         }
 
-        // 
         const btnAddPanier = document.getElementById("btnAddPanier");
-        // 
+        // Bonton événement pour rajouter un une ou plusieur cameras
         btnAddPanier.addEventListener("click", (e) => {
             e.preventDefault();
             const list = document.getElementById("option");
             const quantity = document.getElementById("quantity");
 
-            //???? Crée une class produit
-            // créer un nouveau produit 
+            // créer un nouveau produit grace à la class dans utilitie
             let objectProduct = new Product(
                 newId,
                 product.name,

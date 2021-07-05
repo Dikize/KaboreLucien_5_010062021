@@ -1,7 +1,9 @@
 //Mise à jour du PanierPreview
 panierPreview();
 
-//fetch de l'URL
+// récupérer(appel) URL(Api) grace à fetch
+// 1er then renvoie une Promesse Json pour informe si correct et 2em accède au data Json
+// catch log l'erreur s'il y'en à une
 fetch(url)
     .then((response) => response.json())
     .then((data) => {
@@ -17,7 +19,8 @@ function addCards(data) {
         const card = document.getElementById("liste");
         //convertit le prix
         const price = convertPrice(produit.price);
-        //
+        
+        //insérer le HTML dans le document
         card.innerHTML += `
         <div class="col-sm-12 col-md-6 col-lg-6 pb-3 carte ">
             <div class="card border shadow p-3 mb-5 bg-body rounded">
@@ -37,7 +40,7 @@ function addCards(data) {
             </div>
         </div>`;
 
-        // Animation card
+        // Animation card grace a Vanilla-Tilt
         VanillaTilt.init(document.querySelectorAll(".card"), {
             max: 25,
             speed: 400,
