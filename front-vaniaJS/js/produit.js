@@ -5,67 +5,59 @@ panierPreview();
 const searchParams = new URLSearchParams(location.search);
 const newId = searchParams.get("_id");
 
-//modification de l'adresse d'appel à l'API
+// modification de l'adresse d'appel à l'API, va cherche en fonction de l'ID 
 const newUrl = `https://back-end-orinoco.herokuapp.com/api/Cameras/${newId}`;
 // const newUrl = `http://localhost:3000/api/cameras/${newId}`;
 
 // 
 fetch(newUrl)
-    .then((response) => response.json())
-    .then((data) => {
+    .then(response => response.json())
+    .then(data => {
         const product = data;
         addCard(data);
 
-        // fonction pour la création de card de la page produit
+        // fonction pour la création de card de la page produit avec les data
         function addCard(product) {
 
             // insertion des information de la card du produit
             const selectionProductImage = document.getElementById("productImage");
-            selectionProductImage.innerHTML += 
-            `
+            selectionProductImage.innerHTML +=
+                `
                 <img src="${product.imageUrl}" class="img-fluid img-thumbnail" alt="${product.name}">
-            `
-        ;
+            `;
             // insertion du nom 
             const selectionProductName = document.getElementById("productName");
-            selectionProductName.innerHTML += 
-            `
+            selectionProductName.innerHTML +=
+                `
                 <h5 class="card-title">${product.name}</h5>
-            `
-        ;
+            `;
             // insertion du prix converti grace à la fonction convertPrice
             const selectionProductPrice = document.getElementById("productPrice");
-            selectionProductPrice.innerHTML += 
-            `
+            selectionProductPrice.innerHTML +=
+                `
                 <h5 class="card-title">${convertPrice(product.price)}</h5>
-            `
-        ;
+            `;
             // insertion de la description
             const selectionProductDescription = document.getElementById("productDescription");
-            selectionProductDescription.innerHTML += 
-            `
+            selectionProductDescription.innerHTML +=
+                `
                 <p class="card-text">${product.description}</p>
-            `
-        ;
+            `;
             // 
             addLenses(product);
         }
 
-        // fonction pour la version de l'élément
+        // fonction pour la version(lentille) de l'élément
         function addLenses(product) {
             const versionChoice = document.getElementById("option");
-            // boucle pour la version de l'appareil 
+            // boucle pour recuperer les lentilles de l'appareil 
             for (let lenses of product.lenses) {
-                versionChoice.innerHTML += 
-                `
-                <option value="${lenses}">${lenses}</option>
-                `
-                ;
+                versionChoice.innerHTML += `<option value="${lenses}">${lenses}</option>`;
             }
         }
 
         const btnAddPanier = document.getElementById("btnAddPanier");
-        // Bonton événement pour rajouter un une ou plusieur cameras
+        // Bonton événement pour rajouter la ou les cameras
         btnAddPanier.addEventListener("click", (e) => {
             e.preventDefault();
             const list = document.getElementById("option");
@@ -82,7 +74,7 @@ fetch(newUrl)
                 product.imageUrl
             );
             // vérifie s'il est déja présent
-            // oui? si true, sauvegarde sa place dans le localStorage
+            // oui? si true, sauvegarde sa place dans le localStorage(important pour ne pas avoir 2 fois le meme produit(id) à des emplacement different) 
             let isAlreadyPresent = false;
             let indexModification;
             for (products of panier) {
@@ -95,8 +87,7 @@ fetch(newUrl)
 
             // si true incrémente seulement la quantité
             if (isAlreadyPresent) {
-                panier[indexModification].quantity =
-                    +panier[indexModification].quantity + +objectProduct.quantity;
+                panier[indexModification].quantity += objectProduct.quantity;
                 localStorage.setItem("cameras", JSON.stringify(panier));
                 // false , ajoute le produit au localStorage
             } else {

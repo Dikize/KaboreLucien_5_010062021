@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Présentation Orinoco</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Merienda+One&family=Nunito+Sans&display=swap" rel="stylesheet">
+
+    <style>
+        h1,
+        h2 {
+            font-family: 'Merienda One', sans-serif;
+        }
+
+        a {
+            color: #333;
+            text-decoration: none
+        }
+
+        .modal-content {
+            width: 166%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="container-fluid">
+        <div class="row">
+
+            <div class="col-12">
+                <h1 class="text-center p-4">Construire le front-end d'un site e-commerce Orinoco</h1>
+
+                <div class="mx-5 d-flex justify-content-center flex-column">
+                    <h2 class="h1 text-center my-5"><ins>Compte-rendu mission</ins></h2>
+                    <p class="lead fs-4">L’application web est composée de 4 pages :</p>
+                    <ul class="lead fs-4">
+                        <li>Une page “accueil” sous forme de liste carte, montrant tous les articles disponibles à la
+                            vente.</li>
+                        <li>Une page “produit”, qui affiche de manière dynamique l'élément sélectionné par l'utilisateur
+                            et lui permet de personnaliser le produit et de l'ajouter à son panier.</li>
+                        <li>Une page “panier” contenant un résumé des produits dans le panier, le prix total et un
+                            formulaire permettant de passer une commande.</li>
+                        <li>Une page “confirmation” de commande, remerciant l'utilisateur pour sa commande, et indiquant
+                            le prix total et l'identifiant de commande envoyé par le serveur.</li>
+                    </ul>
+                </div>
+
+                <h2 class="h1 text-center mt-5" id="analyse"><ins>Rapport plan tests unitaires</ins></h2>
+
+                <!-- Tableau utilities -->
+                <div class="col-12 my-5">
+                    <h2 class="text-center">utilities.js</h2>
+                    <table class="table table-hover table-striped table-bordered border-info text-center fs-5">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="fs-5">Lignes de code testées</th>
+                                <th scope="col" class="fs-5">Fonction testée</th>
+                                <th scope="col" class="fs-5">Résultat attendu</th>
+                                <th scope="col" class="fs-5">Verification resultat sorti</th>
+                                <th scope="col" class="fs-5">Problème possible</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p>7 à 17</p>
+                                </td>
+                                <td>
+                                    <p>convertPrice</p>
+                                </td>
+                                <td>
+                                    <p>convertir et afficher le prix en fonction de la devis EURO(€), diviser le prix
+                                        par 100 pour avoir les centimes.</p>
+                                </td>
+                                <td>
+                                    <p>vérifier que le prix s'affiche bien EUR(€) et pas en centimes.</p>
+                                </td>
+                                <td>
+                                    <p>Pas de conversion et les tarifs s'afficheront sans devis et en centimes. Resultat
+                                        confusion sur le prix de l'élément.</p>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <p>20 à 30</p>
+                                </td>
+                                <td>
+                                    <p>panierPreview</p>
+                                </td>
+                                <td>
+                                    <p>Affiche le nombre de produit ajouter dans le panier dans la navBar.</p>
+                                </td>
+                                <td>
+                                    <p>Vérifier que le produit ce rajoute après avoir effectuer l'action ajouter dans
+                                        la page produit.
+                                        <br>
+                                        <!-- btn Modal -->
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#panierPreview">Image</button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="panierPreview" tabindex="-1"
+                                            aria-labelledby="panierPreviewLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="panierPreviewLabel">exemple</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <img src="favicon/img/utilities/panierPreview.png" width="700"
+                                                            alt="">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Ferme</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>Pas de présence du nombre de produit selectionner dans la navBar.</p>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <p>32 à 42</p>
+                                </td>
+                                <td>
+                                    <p>Class Product</p>
+                                </td>
+                                <td>
+                                    <p>Permet la création d'un ou plusieurs produits avec tous les carrateristiques
+                                        contenue dans model de l'API.</p>
+                                </td>
+                                <td>
+                                    <p>Verification de la création d'un produit dans le localStorage et panier, quand
+                                        ajoutera un produit de la page produit.</p>
+                                </td>
+                                <td>
+                                    <p>Impossible d'ajouter un élement dans le localStorage et panier.</p>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <p>45 à 71</p>
+                                </td>
+                                <td>
+                                    <p>displayProductListTable</p>
+                                </td>
+                                <td>
+                                    <p>Permet l'affichage du produit selectionner avec l'image, nom, option(lentille),
+                                        prix et prix total dans la page panier et confirmation(order).</p>
+                                </td>
+                                <td>
+                                    <p>Verifier la présence de l'affichage dans le panier et le bouton <code>Valider le panier</code> est fonctionnel..
+
+                                        <br>
+                                        <!-- btn Modal -->
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#displayProductListTable">Image</button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="displayProductListTable" tabindex="-1"
+                                            aria-labelledby="displayProductListTableLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="displayProductListTableLabel">exemple</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <img src="favicon/img/utilities/displayProductListTable.png" width="700"
+                                                            alt="">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Ferme</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>Pas d'affichage des élements choisi dans le panier et accès au formulaire et à la page confirmation impossible.</p>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <p>73 à 77</p>
+                                </td>
+                                <td>
+                                    <p>displayTotalPanier</p>
+                                </td>
+                                <td>
+                                    <p>Calcul le total du panier</p>
+                                </td>
+                                <td>
+                                    <p>Verifier que le total dans la page panier correspond à la somme du prix total des produits présent dans le panier.</p>
+                                </td>
+                                <td>
+                                    <p>Affichage du total dans la page panier et confirmation innexistant.</p>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <p>86 à 88</p>
+                                </td>
+                                <td>
+                                    <p>clearPanier</p>
+                                </td>
+                                <td>
+                                    <p>Permet la suppression de tous les produits ajouter au panier et dans le localStorage.</p>
+                                </td>
+                                <td>
+                                    <p>Verifier la présence de produit dans le localStorage et tableau(panier) après avoir cliquer sur le bouton <code>Vider le panier</code> dans la page panier qui devrais tous être supprimé.</p>
+                                </td>
+                                <td>
+                                    <p>Suppression des produits ajouter au localStorage/panier impossible.</p>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div><!-- Fin tableau -->
+
+                <!-- Tableau index -->
+                <div class="col-12 my-5">
+                    <h2 class="text-center">index.js</h2>
+                    <table class="table table-hover table-striped table-bordered border-info text-center fs-5">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="fs-5">Lignes de code testées</th>
+                                <th scope="col" class="fs-5">Fonction testée</th>
+                                <th scope="col" class="fs-5">Résultat attendu</th>
+                                <th scope="col" class="fs-5">Verification resultat sorti</th>
+                                <th scope="col" class="fs-5">Problème possible</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p>7 à 13</p>
+                                </td>
+                                <td>
+                                    <p>méthode fetch</p>
+                                </td>
+                                <td>
+                                    <p>Appel API via fetch permet de récuperer les données des différentes produits (
+                                        id, nom, image, Url, price, description ).</p>
+                                </td>
+                                <td>
+                                    <p>L'affichage des produits ( 5 appareils photos ) sur la page ce fait correctement.
+                                        <br>
+                                        <!-- btn Modal -->
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#fetch">Image</button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="fetch" tabindex="-1" aria-labelledby="fetchLabel"
+                                            aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="fetchLabel">exemple</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <img src="favicon/img/index/fetch.png" width="700" alt="">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Ferme</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>Problème d'url connexion à l'API impossible (erreur 404).
+                                        <br>
+                                        <!-- btn Modal -->
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#fetch1">Image</button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="fetch1" tabindex="-1" aria-labelledby="fetch1Label"
+                                            aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="fetch1Label">exemple</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <img src="favicon/img/index/fetch1.png" width="700" alt="">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Ferme</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </p>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <p>18 à 44</p>
+                                </td>
+                                <td>
+                                    <p>Function addCards</p>
+                                </td>
+                                <td>
+                                    <p>Inserer autant de cartes que contiennent les données contenue dans l'API ( id,
+                                        nom, image, Url, price,
+                                        description ) les affichées dans les cartes avec les données de chaque produit,
+                                        excepté l'id et les tailles lentilles.
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>L'affichage des produits ( 5 appareils photos ) sur la page ce fait correctement.
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>les cartes, image, prix et/ou la description ne s'affiche pas.
+
+                                        <br>
+                                        <!-- btn Modal -->
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#addCards">Image</button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="addCards" tabindex="-1"
+                                            aria-labelledby="addCardsLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="addCardsLabel">exemple</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <img src="favicon/img/index/addCards.png" width="700" alt="">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Ferme</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div><!-- Fin tableau index -->
+
+                <!-- Tableau produit -->
+                <div class="col-12 my-5">
+                    <h2 class="text-center">produit.js</h2>
+                    <table class="table table-hover table-striped table-bordered border-info text-center fs-5">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="fs-5">Lignes de code testées</th>
+                                <th scope="col" class="fs-5">Fonction testée</th>
+                                <th scope="col" class="fs-5">Résultat attendu</th>
+                                <th scope="col" class="fs-5">Verification resultat sorti</th>
+                                <th scope="col" class="fs-5">Problème possible</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p>20</p>
+                                </td>
+                                <td>
+                                    <p>addCard</p>
+                                </td>
+                                <td>
+                                    <p>Affiche le produit selectionner, l'image, le nom, le prix, la description ainsi
+                                        que la lentille pour une personalisation.</p>
+                                </td>
+                                <td>
+                                    <p>L'affiche du produit selectionner ce fait bien dans la page produit, avec la
+                                        présence de toute les carractéristiques.
+
+                                        <br>
+                                        <!-- btn Modal -->
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#addCard">Image</button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="addCard" tabindex="-1"
+                                            aria-labelledby="addCardLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="addCardLabel">exemple</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <img src="favicon/img/produit/addCard.png" width="700" alt="">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Ferme</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>Pas de produit ni carrateristique lier au produit (erreur 404) fetch api
+                                        impossible.
+                                        <br>
+                                        <!-- btn Modal -->
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#btnAddPanier">Image</button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="btnAddPanier" tabindex="-1"
+                                            aria-labelledby="btnAddPanierLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="btnAddPanierLabel">exemple</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <img src="favicon/img/produit/btnAddPanier.png" width="700"
+                                                            alt="">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Ferme</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </p>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <p>55</p>
+                                </td>
+                                <td>
+                                    <p>addLenses</p>
+                                </td>
+                                <td>
+                                    <p>Affiche la lentille dans un menu deroulant pour que l'utilisateur puisse faire
+                                        son choix.</p>
+                                </td>
+                                <td>
+                                    <p>Si un menu déroulant avec les differentes taille de lentille est bien present en
+                                        dessous du nom du produit.
+
+                                        <br>
+                                        <!-- btn Modal -->
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#addLenses">Image</button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="addLenses" tabindex="-1"
+                                            aria-labelledby="addLensesLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="addLensesLabel">exemple</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <img src="favicon/img/produit/addLenses.png" width="700" alt="">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Ferme</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>Pas de personalisation de la lentille possible.</p>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <p>69 à 106</p>
+                                </td>
+                                <td>
+                                    <p>btnAddPanier</p>
+                                </td>
+                                <td>
+                                    <p>Ajouter le produit séléctioner au localstorage et au panier, ainsi que la
+                                        quantité et le choix
+                                        de lentille.
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>Le produit ajouter s'affiche bien dans le local storage et dans le panier, avec
+                                        la quantité et le
+                                        choix de lentilles.
+                                        <br>
+                                        <!-- btn Modal -->
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#btnAddPanierVerif">Image</button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="btnAddPanierVerif" tabindex="-1"
+                                            aria-labelledby="btnAddPanierVerifLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="btnAddPanierVerifLabel">exemple</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <img src="favicon/img/produit/btnAddPanierVerif.png" width="700"
+                                                            alt="">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Ferme</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>Le produits ne s'ajoute pas au localStorage ni dans le panier.</p>
+                                    <p>Un même produit à 2 emplacement
+                                        différentes.
+                                        <br>
+                                        <!-- btn Modal -->
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#btnAddPanier1">Image</button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="btnAddPanier1" tabindex="-1"
+                                            aria-labelledby="btnAddPanier1Label" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="btnAddPanier1Label">exemple</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <img src="favicon/img/produit/btnAddPanier2.png" width="700"
+                                                            alt="">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Ferme</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div><!-- Fin tableau produit -->
+
+                <!-- Tableau panier -->
+                <div class="col-12 my-5">
+                    <h2 class="text-center">panier.js</h2>
+                    <table class="table table-hover table-striped table-bordered border-info text-center fs-5">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="fs-5">Lignes de code testées</th>
+                                <th scope="col" class="fs-5">Fonction testée</th>
+                                <th scope="col" class="fs-5">Résultat attendu</th>
+                                <th scope="col" class="fs-5">Verification resultat sorti</th>
+                                <th scope="col" class="fs-5">Problème possible</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p>27</p>
+                                </td>
+                                <td>
+                                    <p>addProduct</p>
+                                </td>
+                                <td>
+                                    <p>Ajouter un produit avec le button +.</p>
+                                </td>
+                                <td>
+                                    <p>La quantité augmente à l'appui du bouton +, grace à la liasion événementielle au
+                                        bouton de la ligne 35.</p>
+                                </td>
+                                <td>
+                                    <p>La page ne se recharge pas, la quantité ne change pas, la colonne quantité ne
+                                        s'incrémentate pas</p>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <p>41</p>
+                                </td>
+                                <td>
+                                    <p>minusProduct</p>
+                                </td>
+                                <td>
+                                    <p>Supprime 1 à quantity si la quantité est > 1 sinon supprime la ligne entière du
+                                        produit, liasion événementielle au bouton de la ligne 52.</p>
+                                </td>
+                                <td>
+                                    <p>S'il y'a 2 produits. Supprimer une première fois verifier que la quantité est
+                                        désormais de 1 et supprimer une deuxième fois , verifier que la ligne du produit
+                                        en question s'éfface</p>
+                                </td>
+                                <td>
+                                    <p>La page ne se recharge pas, la quantité ne change pas, la ligne du produit ne
+                                        s'efface pas.</p>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <p>59</p>
+                                </td>
+                                <td>
+                                    <p>totalPrice</p>
+                                </td>
+                                <td>
+                                    <p>Fonction global à la ligne 83 utilities. Permet l'affichage du prix total des
+                                        produits contenus dans le localStorage après l'avoir convertie grâce à la
+                                        fonction converPrice à la ligne 7(utilities).</p>
+                                </td>
+                                <td>
+                                    <p>Le total dans le tableau dois correspondre à la somme des produit présent dans le
+                                        panier, avoir 2 chiffre après la virgule pour les centimes.</p>
+                                </td>
+                                <td>
+                                    <p>Pas de présence de la somme des produits.</p>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <p>64</p>
+                                </td>
+                                <td>
+                                    <p>Even validationPanier</p>
+                                </td>
+                                <td>
+                                    <p>À l'appui du bouton <code>Valider le produit</code>, on masque le bouton
+                                        <code>vide le panier</code> et affiche le formulaire.</p>
+                                </td>
+                                <td>
+                                    <p>Vérifier l'apparition du formulaire et la dispariton du bouton <code>vide le
+                                            panier</code>.</p>
+                                </td>
+                                <td>
+                                    <p>Pas de formulaire donc l'utilisateur n'aura pas la possibilliter de passer la
+                                        commande.</p>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <p>71</p>
+                                </td>
+                                <td>
+                                    <p>Even buttonClearPanier</p>
+                                </td>
+                                <td>
+                                    <p>Supprime tous les produits du panier ( du html et du localstorage) et recharge la
+                                        page.</p>
+                                </td>
+                                <td>
+                                    <p>Verifier que le localStorage est vide / Verifier que le tableau html est vide.
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>Le localStorage ne ce vide pas / la page ne se recharge pas / le tableau html ne
+                                        ce vide pas.</p>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <p>86</p>
+                                </td>
+                                <td>
+                                    <p>Even order</p>
+                                </td>
+                                <td>
+                                    <p>Au "click" Envoie les données fournie par l'utilisateur, si le formulaire est
+                                        correctement remplie et si le panier possède au moins 1 produit / Appel l'API
+                                        avec fetch puis envoie les données avec la méthode "post".</p>
+                                </td>
+                                <td>
+                                    <p>Verifier que "contact s'envoie bien sur le localStorage si toutes les conditions
+                                        sont remplies.</p>
+                                </td>
+                                <td>
+                                    <p>L'envoie ne ce fait pas, la commande ne sera pas effectuer.</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div><!-- Fin tableau -->
+
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+        integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

@@ -16,10 +16,9 @@ function convertPrice(productPrice) {
     return price;
 }
 
-// calcul du PanierPreview
+// calcul du nombre d'élement ajouter au localStorage/panier et l'affiche dans la navBar
 function panierPreview() {
-    if (panier.length == 0) {
-    } else {
+    if (panier.length == 0) {} else {
         let addPanierPreview = document.getElementById("panierPreview");
         let calculPanierPreview = 0;
         for (product of panier) {
@@ -42,7 +41,7 @@ class Product {
     }
 }
 
-// ajoute le tableau de commande
+// ajoute le tableau de commande dans la page panier et confirmation
 function displayProductListTable(product) {
     const indexProduct = panier.indexOf(product);
     const productList = document.getElementById("productsPanier");
@@ -73,9 +72,7 @@ function displayProductListTable(product) {
 // calcul du total
 function displayTotalPanier() {
     let totalPanier = 0;
-    panier.forEach((camera) => {
-        totalPanier = totalPanier + camera.price * camera.quantity;
-    });
+    panier.forEach(camera => totalPanier += camera.price * camera.quantity);
     return totalPanier;
 }
 

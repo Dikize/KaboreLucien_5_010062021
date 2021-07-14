@@ -27,23 +27,23 @@ for(element of deletedItem){
     element.classList.add("d-none");
 }
 
-//affiche le prix total
+// affiche le prix total
 totalPrice();
 
-//bouton imprimer
+// bouton imprimer
 const print = document.getElementById("print");
 print.addEventListener("click", (e) => {
     e.preventDefault;
     window.print();
 });
 
-//vide le localStorage
+// vide le localStorage/panier
 const clickHome = document.getElementById("accueil");
 clickHome.addEventListener("click", () => {
     clearPanier();
 });
 
-// Supprime le panier
+// vide le localStorage/panier
 const clickPanier = document.getElementById("panierPreview");
 clickPanier.addEventListener("click", () => {
     clearPanier();
