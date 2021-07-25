@@ -142,18 +142,17 @@ if (panier.length < 1) {
             }
 
             // envoie en POST les produits selectionner et le formulaire
-            fetch("https://back-end-orinoco.herokuapp.com/api/Cameras/order",
-                    // fetch("http://localhost:3000/api/cameras/order", 
-                    {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify({
-                            contact,
-                            products
-                        }),
-                    })
+            // fetch("https://back-end-orinoco.herokuapp.com/api/Cameras/order",
+            fetch("http://localhost:3000/api/cameras/order", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        contact,
+                        products
+                    }),
+                })
                 .then(response => response.json())
                 .then(data => {
                     localStorage.setItem("order", JSON.stringify(data));

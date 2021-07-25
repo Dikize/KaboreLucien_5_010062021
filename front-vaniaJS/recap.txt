@@ -1,3 +1,1 @@
 - Ajouter plus de commentaire comme souhaiter dans l'enoncer
-
-- effectuer le plan test try catch

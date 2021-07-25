@@ -1,6 +1,6 @@
 //Variables Globales
-const url = `https://back-end-orinoco.herokuapp.com/api/Cameras`;
-// const url = `http://localhost:3000/api/cameras`;
+// const url = `https://back-end-orinoco.herokuapp.com/api/Cameras`;
+const url = `http://localhost:3000/api/cameras`;
 const panier = JSON.parse(localStorage.getItem("cameras")) || [];
 
 // convertir le prix
@@ -86,3 +86,17 @@ function totalPrice() {
 function clearPanier() {
     localStorage.clear();
 }
+
+// const today = new Date();
+
+// function date(chaine) {
+//     let newDate = new Date(chaine).toLocaleDateString("fr-FR", {
+//         year: "numeric",
+//         month: "long",
+//         day: "numeric",
+//         hour: "numeric",
+//         minute: "numeric"
+//     });
+//     return newDate;
+// }
+// console.log(date(today))
