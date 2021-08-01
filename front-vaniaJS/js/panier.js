@@ -142,8 +142,8 @@ if (panier.length < 1) {
             }
 
             // envoie en POST les produits selectionner et le formulaire
-            // fetch("https://back-end-orinoco.herokuapp.com/api/Cameras/order",
-            fetch("http://localhost:3000/api/cameras/order", {
+            fetch("https://back-end-orinoco.herokuapp.com/api/Cameras/order", {
+                    // fetch("http://localhost:3000/api/cameras/order", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

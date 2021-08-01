@@ -1,6 +1,6 @@
 //Variables Globales
-// const url = `https://back-end-orinoco.herokuapp.com/api/Cameras`;
-const url = `http://localhost:3000/api/cameras`;
+const url = `https://back-end-orinoco.herokuapp.com/api/Cameras`;
+// const url = `http://localhost:3000/api/cameras`;
 const panier = JSON.parse(localStorage.getItem("cameras")) || [];
 
 // convertir le prix

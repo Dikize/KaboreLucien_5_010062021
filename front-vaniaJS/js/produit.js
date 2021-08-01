@@ -6,8 +6,8 @@ const searchParams = new URLSearchParams(location.search);
 const newId = searchParams.get("_id");
 
 // modification de l'adresse d'appel à l'API, va cherche en fonction de l'ID 
-// const newUrl = `https://back-end-orinoco.herokuapp.com/api/Cameras/${newId}`;
-const newUrl = `http://localhost:3000/api/cameras/${newId}`;
+const newUrl = `https://back-end-orinoco.herokuapp.com/api/Cameras/${newId}`;
+// const newUrl = `http://localhost:3000/api/cameras/${newId}`;
 
 // 
 fetch(newUrl)
